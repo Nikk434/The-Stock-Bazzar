@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #form {
+      margin: 0px;
+      display: flex;
+      flex-direction: row;
+      font-family: 'Baloo Bhai 2', cursive;
+      font-family: 'Palanquin Dark', sans-serif;
+      /* align-items: center; */
+      justify-content: center;
+    }
+
+    #searchBox {
+      margin: 0px;
+      height: 30px;
+      border: 1px solid blue;
+      border-radius: 20px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    #sub {
+      margin: 0px;
+      height: 33px;
+      border: 1px solid blue;
+      border-radius: 20px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+
+    #suggestions {
+      display: contents;
+      font-size: 15px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="form">
+
+    <form action="/get_stock_data" method="post">
+      <h2>Enter Stock Symbol </h2>
+      <input type="text" name="stock_symbol" id="searchBox" placeholder="Search...">
+      <div id="suggestions"></div>
+      <button type="submit" id="sub">Submit</button>
+      <h2>Select time series type</h2>
+      <input type="radio" name="ts" value="7 days">
+      7 days
+      <input type="radio" name="ts" value="1 month">
+      1 Month
+      <input type="radio" name="ts" value="3 Month">
+      3 Months
+    </form>
+    {% if result %}
+    <h2>Result:</h2>
+    <p>{{ result }}</p>
+    {% endif %}
+  </section>
+  <script>
+
+    const searchBox = document.getElementById('searchBox');
+    const suggestions = document.getElementById('suggestions');
+
+    searchBox.addEventListener('input', function () {
+      const inputValue = searchBox.value.trim().toLowerCase();
+
+      if (inputValue.length === 0) {
+        suggestions.innerHTML = '';
+        return;
+      }
+
+      fetchSuggestions(inputValue);
+    });
+
+    async function fetchSuggestions(keyword) {
+      const apiKey = '54c68ba3bdmshd0f85b301433eafp122d90jsn65a6d58d21f5';
+      const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keyword}&apikey=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        suggestions.innerHTML = '';
+
+        for (const result of data.bestMatches || []) {
+          const matchScore = parseFloat(result['9. matchScore']);
+          if (matchScore >= 0.5) {
+            const symbol = result['1. symbol'];
+            const name = result['2. name'];
+            const suggestionItem = document.createElement('div');
+            suggestionItem.textContent = `${symbol} - ${name}`;
+            suggestionItem.classList.add('suggestion');
+            suggestionItem.style.cursor = 'pointer'; // Set cursor to pointer
+            suggestionItem.addEventListener('click', () => {
+              searchBox.value = symbol;
+              suggestions.innerHTML = '';
+            });
+            suggestions.appendChild(suggestionItem);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching suggestions:', error);
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      if (!suggestions.contains(event.target) && event.target !== searchBox) {
+        suggestions.innerHTML = '';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
