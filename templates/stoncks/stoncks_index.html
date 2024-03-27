@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="preconnec
+  t" href="h{ttps://fonts.googleapis.com">
+  <link rel="preconnec
+  t" hr}ef="h{ttps://fonts.gstatic.com" crossorigin>
+  <li nk href="h{ttps}://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=}Palanquin+Dark&display=swap"
+    rel="stylesheet">
+
+    <title>stoNcks</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+
+      #home {
+        margin-top: -40px;
+        /* display: flex; */
+        flex-direction: row;
+        /* padding: 40px 200px; */
+        height: 350px;
+        /* align-items: center; */
+        justify-content: center;
+      }
+
+      #home::before {
+        background-image: url('https://wallpapers.com/images/featured/stock-market-pd5zksxr07t7a4xu.webp');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 380px;
+        opacity: .30;
+      }
+
+      #home h1 {
+        display: flex;
+        white-space: pre-line;
+        color: white;
+        text-align: left;
+        font-family: 'Palanquin Dark', sans-serif;
+        font-size: 60px;
+        padding-left: 120px;
+        padding-bottom: 10px;
+      }
+
+      #home p {
+        color: white;
+        text-align: left;
+        font-family: 'Baloo Bhai 2', cursive;
+        font-family: 'Palanquin Dark', sans-serif;
+        font-size: 30px;
+        padding-left: 230px;
+        padding-right: 30px;
+      }
+
+      .brand {
+        text-decoration-line: underline;
+        text-decoration-color: rgb(255, 124, 2);
+        text-decoration-thickness: 20px;
+        ;
+        margin-bottom: 20px;
+      }
+
+      #services {
+        display: flex;
+        justify-content: center;
+        /* margin: 0px; */
+      }
+
+      #services .box {
+        height: 180px;
+        width: 100%;
+        border-radius: 30px;
+        
+        border: 2px solid rgb(255, 124, 2);
+        /* box-shadow: 10px 10px 10px black; */
+        padding: 20px;
+        margin: 10px;
+        background-color: rgb(57, 57, 57);
+        transition: all 0.5s ease-in-out;
+      }
+
+      /* #services .box img {
+      height: 125px;
+      margin: auto;
+      display: block;
+      color: black;
+    } */
+
+      #services .box h2 {
+        display: flex;
+        font-family: 'Baloo Bhai 2', cursive;
+        font-family: 'Palanquin Dark', sans-serif;
+        font-size: 25px;
+        /* padding: 10px; */
+        justify-content: center;
+      }
+
+      /* Style the container */
+      .list-container {
+        max-height: 100px;
+        /* Set the desired height to show the first 5-6 items */
+        overflow-y: scroll;
+        /* Add a vertical scrollbar if necessary */
+      }
+
+      /* Style the ordered list */
+      ol {
+        list-style-type: decimal;
+        /* Use decimal numbering for ordered list */
+        padding-left: 20px;
+        /* Adjust indentation as needed */
+        margin: 0;
+        /* Remove default margin */
+      }
+
+      /* Style list items (optional) */
+      li {
+        margin-bottom: 10px;
+        margin-left: 40px;
+        /* Add spacing between list items */
+      }
+
+      .form-inline {
+        display: flex;
+        align-items: center;
+        font-family: 'Baloo Bhai 2', cursive;
+        font-family: 'Palanquin Dark', sans-serif;
+        align-items: center;
+      }
+
+      .form-inline input[type="text"],
+      .form-inline button {
+        margin-right: 10px;
+        /* Adjust the margin as needed */
+      }
+
+      /* flex-direction: row; */
+
+      /* justify-content: center; */
+      /* width: 500px; */
+      form {
+        max-height: 100px;
+        /* Set the desired height to show the first 5-6 items */
+        overflow-y: scroll;
+      }
+
+      #searchBox {
+        margin: 0px;
+        height: 30px;
+        border: 1px solid blue;
+        border-radius: 20px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+
+      #sub {
+        margin: 0px;
+        height: 33px;
+        border: 1px solid blue;
+        border-radius: 20px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+
+      #suggestions {
+        display: contents;
+        font-size: 15px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .box #bdr1{
+        border-radius: 10px solid red;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+    </style>
+</head>
+
+<body>
+
+  <section id="home">
+    <h1><span class="brand">The
+        <span class="brand">Stock</span>
+        <span class="brand">Bazar.</span></span>
+      <p>
+        Whether you're an investor, a trader, or just curious 
+        about financial markets,<span style="font-style: italic; color: rgb(255, 124, 2);"> The Stock Bazar </span> provides you with the tools you need to stay informed and 
+        make informed decisions.
+      </p>
+    </h1>
+  </section>
+  <div id="services">
+    <div class="box">
+      <!-- <img src="templates\stoncks\top-10.png"> -->
+      <h2>Top 100 Stocks</h2>
+      <form action="/get_stock_data_2" method="get">
+        <ol class="list-container">
+          <li>
+            <a href="{{url_for('get_stock_3m', stock_symbol='ADBE', ts='3_Month')}}">Adobe</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ABNB', ts='3_Month') }}">Airbnb</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ALGN', ts='3_Month') }}">Align Technology</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='GOOGL', ts='3_Month')}}">Alphabet A</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='GOOG', ts='3_Month') }}">Alphabet C</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AMZN', ts='3_Month') }}">Amazon</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AMD', ts='3_Month') }}">AMD</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AEP', ts='3_Month') }}">American Electric Power</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AMGN', ts='3_Month') }}">Amgen</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ADI', ts='3_Month') }}">Analog Devices</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ANSS', ts='3_Month') }}">ANSYS</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AAPL', ts='3_Month') }}">Apple</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AMAT', ts='3_Month') }}">Applied Materials</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ASML', ts='3_Month') }}">ASML</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AZN', ts='3_Month') }}">AstraZeneca</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='TEAM', ts='3_Month') }}">Atlassian a</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ADSK', ts='3_Month') }}">Autodesk</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ADP', ts='3_Month') }}">Automatic Data Processing</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='BKR', ts='3_Month') }}">Baker Hughes</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='BIIB', ts='3_Month') }}">Biogen</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='BKNG', ts='3_Month') }}">Booking Holdings</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='AVGO', ts='3_Month') }}">Broadcom</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CDNS', ts='3_Month') }}">Cadence Design Systems</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CHRT', ts='3_Month') }}">Charte a</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CTAS', ts='3_Month') }}">Cintas</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CSCO', ts='3_Month') }}">Cisco</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CTSH', ts='3_Month') }}">Cognizant</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CMCSA', ts='3_Month')}}">Comcast</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CEG', ts='3_Month') }}">Constellation Energy</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CPRT', ts='3_Month') }}">Copart</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CSGP', ts='3_Month') }}">CoStar Group</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='COST', ts='3_Month') }}">Costco Wholesale</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CRWD', ts='3_Month') }}">CrowdStrike</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='CSX', ts='3_Month') }}">CSX</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='DDOG', ts='3_Month') }}">Datado a</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='DXCM', ts='3_Month') }}">DexCom</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='FANG', ts='3_Month') }}">Diamondback Energy</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='DLTR', ts='3_Month') }}">Dollar Tree</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='EBAY', ts='3_Month') }}">eBay</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='EA', ts='3_Month') }}">Electronic Arts</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ENPH', ts='3_Month') }}">Enphase Energy</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='EXC', ts='3_Month') }}">Exelon</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='FAST', ts='3_Month') }}">Fastenal</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='FTNT', ts='3_Month') }}">Fortinet</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='GILD', ts='3_Month') }}">Gilead Sciences</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='GFS', ts='3_Month') }}">GLOBALFOUNDRIES</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='HON', ts='3_Month') }}">Honeywell</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='IDXX', ts='3_Month') }}">IDEXX Laboratories</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ILMN', ts='3_Month') }}">Illumina</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='INTC', ts='3_Month') }}">Intel</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='INTU', ts='3_Month') }}">Intuit</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ISRG', ts='3_Month') }}">Intuitive Surgical</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='JD', ts='3_Month') }}">JD.com</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='KDP', ts='3_Month') }}">Keurig Dr Pepper</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='KLAC', ts='3_Month') }}">KLA-Tencor</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='LRCX', ts='3_Month') }}">Lam Research</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='LCID', ts='3_Month') }}">Lucid</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='LULU', ts='3_Month') }}">Lululemon Athletica</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MAR', ts='3_Month') }}">Marriott</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MRVL', ts='3_Month') }}">Marvell Technology</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MELI', ts='3_Month') }}">MercadoLibre</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='META', ts='3_Month') }}">Meta Platforms</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MCHP', ts='3_Month') }}">Microchip Technology</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MU', ts='3_Month') }}">Micron Technology</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MSFT', ts='3_Month') }}">Microsoft</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MRNA', ts='3_Month') }}">Moderna</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MDLZ', ts='3_Month') }}">Mondelez</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='MNST', ts='3_Month') }}">Monster Beverage</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='NFLX', ts='3_Month') }}">Netflix</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='NVDA', ts='3_Month') }}">NVIDIA</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='NXPI', ts='3_Month') }}">NXP Semiconductors</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ORLY', ts='3_Month') }}">O Reilly Automotive</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ODFL', ts='3_Month') }}">Old Dominion Freight Line</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ON', ts='3_Month') }}">ON Semiconductor</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='PCAR', ts='3_Month') }}">Paccar</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='PANW', ts='3_Month') }}">Palo Alto Networks</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='PAYX', ts='3_Month') }}">Paychex</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='PYPL', ts='3_Month') }}">PayPal</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='PDD', ts='3_Month') }}">PDD Holdings</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='PEP', ts='3_Month') }}">PepsiCo</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='QCOM', ts='3_Month') }}">QUALCOMM</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='REGN', ts='3_Month') }}">Regeneron Pharmaceuticals</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ROST', ts='3_Month') }}">Ross Stores</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='SGEN', ts='3_Month') }}">Seagen</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='SIRI', ts='3_Month') }}">Sirius XM</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='SBUX', ts='3_Month') }}">Starbucks</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='SNPS', ts='3_Month') }}">Synopsys</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='TSLA', ts='3_Month') }}">Tesla</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='KHC', ts='3_Month') }}">The Kraft Heinz Company</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='TMUS', ts='3_Month') }}">T-Mobile US</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='VRSK', ts='3_Month') }}">Verisk Analytic a</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='VRTX', ts='3_Month') }}">Vertex Pharmaceuticals</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='WBA', ts='3_Month') }}">Walgreens Boots Alliance</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='WBD', ts='3_Month') }}">Warner Bros. Discovery</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='WDAY', ts='3_Month') }}">Workda a</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='XEL', ts='3_Month') }}">Xcel Energy</a>
+          </li>
+          <li>
+            <a href="{{ url_for('get_stock_3m', stock_symbol='ZM', ts='3_Month') }}">Zoom Video Communications</a>
+          </li>
+        </ol>
+      </form>
+    </div>
+    <div class="box" ID="bdr2">
+      <!-- <img   src="/Project 2/IMG/1.1.png" alt=""> -->
+      <h2 class="h-secondary center">Search your Favorites</h2>
+      <section id="form">
+
+        <form action="/get_stock_data" method="post">
+          <div class="form-inline">
+            <h2>Enter Stock name/symbol </h2>
+            <input type="text" name="stock_symbol" id="searchBox" placeholder="Search...">
+            <button type="submit" id="sub">Submit</button>
+          </div>
+          <div id="suggestions"></div>
+          <h2>Select time series type</h2>
+          <input type="radio" name="ts" value="7 days">
+          7 days
+          <input type="radio" name="ts" value="1 month">
+          1 Month
+          <input type="radio" name="ts" value="3 Month">
+          3 Months
+        </form>
+        {% if result %}
+        <h2>Result:</h2>
+        <p>{{ result }}</p>
+        {% endif %}
+      </section>
+      <script>
+
+        const searchBox = document.getElementById('searchBox');
+        const suggestions = document.getElementById('suggestions');
+
+        searchBox.addEventListener('input', function () {
+          const inputValue = searchBox.value.trim().toLowerCase();
+
+          if (inputValue.length === 0) {
+            suggestions.innerHTML = '';
+            return;
+          }
+
+          fetchSuggestions(inputValue);
+        });
+
+        async function fetchSuggestions(keyword) {
+          const apiKey = '54c68ba3bdmshd0f85b301433eafp122d90jsn65a6d58d21f5';
+          const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keyword}&apikey=${apiKey}`;
+
+          try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            suggestions.innerHTML = '';
+
+            for (const result of data.bestMatches || []) {
+              const matchScore = parseFloat(result['9. matchScore']);
+              if (matchScore >= 0.5) {
+                const symbol = result['1. symbol'];
+                const name = result['2. name'];
+                const suggestionItem = document.createElement('div');
+                suggestionItem.textContent = `${symbol} - ${name}`;
+                suggestionItem.classList.add('suggestion');
+                suggestionItem.style.cursor = 'pointer'; // Set cursor to pointer
+                suggestionItem.addEventListener('click', () => {
+                  searchBox.value = symbol;
+                  suggestions.innerHTML = '';
+                });
+                suggestions.appendChild(suggestionItem);
+              }
+            }
+          } catch (error) {
+            console.error('Error fetching suggestions:', error);
+          }
+        }
+
+        document.addEventListener('click', function (event) {
+          if (!suggestions.contains(event.target) && event.target !== searchBox) {
+            suggestions.innerHTML = '';
+          }
+        });
+      </script>
+
+    </div>
+  </div>
+</body>
+
+</html>
