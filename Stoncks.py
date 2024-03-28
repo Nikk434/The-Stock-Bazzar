@@ -53,14 +53,6 @@ def get_stock_data_daily():
     df.reset_index(inplace=True)
     df = df[['Date', '1. open', '2. high', '3. low', '4. close', '5. volume']]
     print("Column names in DataFrame:", df.columns)
-    # print(df)
-    # x = df[['2. high', '3. low', '4. close', '5. volume']]
-    # y = df['1. open']
-
-    # X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-    # model = LogisticRegression()
-    # model.fit(X_train,y_train)
-    # y_pred = model.predict(X_test)
 
     if selected_option== '7 days':
         _7daysdf = df.head(7)
@@ -73,35 +65,6 @@ def get_stock_data_daily():
         return render_template('stoncks/daily.html', daily_data=_3monthdf.to_dict(orient='records'), stock_symb=stock_symbol)
     else: 
         return render_template('stoncks/err.html')
-
-# @app.route('/get_stock_data_monthly')
-# def get_stock_data_monthly():
-#     symbol = 'AAPL'  # Replace this with the stock symbol you want to retrieve
-#     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={symbol}&apikey={API_KEY}'
-    
-#     response = requests.get(url)
-#     json_text = response.text  # Get the JSON text from the response
-    
-#     # Parse the JSON text into a dictionary
-#     try:
-#         data = json.loads(json_text)
-#     except json.JSONDecodeError as e:
-#         return 'error''Failed to decode JSON: ' + str(e)
-    
-#     # Check if the response contains an error message
-#     if 'Error Message' in data:
-#         return 'error'; data['Error Message']
-        
-#     monthly_data = data.get('Monthly Time Series', {})
-#     df = pd.DataFrame.from_dict(monthly_data, orient='index')
-#     df.reset_index(inplace=True)
-#     df.columns = ['Month', 'Open', 'High', 'Low', 'Close', 'Volume']
-
-#     print(df.head())
-#     print(monthly_data)
-#     return render_template('monthly.html', data=df.to_dict(orient='records'), stock_symb=symbol)
-    
-    # return jsonify(json_text)
 
 @app.route('/get_stock_data_2', methods = ['GET'])
 def get_stock_3m():
