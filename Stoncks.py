@@ -8,7 +8,7 @@ import requests
 
 app = Flask(__name__)
 
-API_KEY = '54c68ba3bdmshd0f85b301433eafp122d90jsn65a6d58d21f5'  # Replace this with your API key
+API_KEY = '54c68ba3bdmshd0f85b301433eafp122d90jsn65a6d58d21f5'  
 
 @app.route('/')
 def stoncks_index():
@@ -22,9 +22,8 @@ def get_stock_data_daily():
 
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_symbol}&apikey={API_KEY}'
     response = requests.get(url)
-    json_text = response.text  # Get the JSON text from the response
+    json_text = response.text  
     
-    # Parse the JSON text into a dictionary
     try:
         daily_data = json.loads(json_text)
     except json.JSONDecodeError as e:
@@ -41,7 +40,6 @@ def get_stock_data_daily():
         formatted_date = date_object.strftime('%b %d, %Y')
         return formatted_date
 
-    # Convert date format and create DataFrame
     data_list = []
     for date, values in time_series_data.items():
         formatted_date = convert_date_format(date)
@@ -74,15 +72,13 @@ def get_stock_3m():
     url2 = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_symbol_args}&apikey={API_KEY}'  
 
     response = requests.get(url2)
-    json_text = response.text  # Get the JSON text from the response
+    json_text = response.text  
     
-    # Parse the JSON text into a dictionary
     try:
         daily_data = json.loads(json_text)
     except json.JSONDecodeError as e:
         return 'error''Failed to decode JSON: ' + str(e)
     print(daily_data)
-    # Check if the response contains an error message
     if 'Error Message' in daily_data:
         return 'error'; daily_data['Error Message']
         
@@ -93,7 +89,6 @@ def get_stock_3m():
         formatted_date = date_object.strftime('%b %d, %Y')
         return formatted_date
 
-    # Convert date format and create DataFrame
     data_list = []
     for date, values in time_series_data.items():
         formatted_date = convert_date_format(date)
